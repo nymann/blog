@@ -29,7 +29,7 @@ date_format: MMM D, YYYY
 # profile
 profile:
   title: Hi, I'm Kristian. 
-  body: Feel free to reach out to me on any of the following platforms.
+  body: I write blog entries about personal projects that I'm working on.
   links:
     github.com/nymann: https://github.com/nymann
     kristian@nymann.dev: mailto:kristian@nymann.dev
