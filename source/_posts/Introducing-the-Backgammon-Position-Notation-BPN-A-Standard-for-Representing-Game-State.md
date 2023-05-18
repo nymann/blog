@@ -5,37 +5,46 @@ date: 2023-05-16 02:33:09
 tags: backgammon
 ---
 
-As a software developer who has written chess engines, I've always appreciated the structural clarity in the world of chess programming. Chess has a rich history of computer analysis and play, with standards like the [Forsyth-Edwards Notation (FEN)](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation) and the [Universal Chess Interface (UCI)](https://en.wikipedia.org/wiki/Universal_Chess_Interface) that provide a solid foundation. This foundation allows us to record games, share positions, and communicate with chess engines in a unified manner.
+Certainly, let's adjust the introduction and clarify the focus of our post. 
 
-Recently, I've turned my attention to backgammon, a game of equally fascinating complexity and an intriguing blend of strategy and probability. However, I was surprised to find that backgammon lacks the standard notations and protocols that have been so instrumental in the chess world.
+---
 
-For a backgammon programming community to flourish like its chess counterpart, I believe we need these standard protocols. They're not just about convenience. Standards like FEN and UCI have catalyzed progress in chess, enabling a global community of developers to collaborate, share insights, and build on each other's work. They have streamlined the training of AI models, pushing the boundaries of what's achievable in computer chess. One of the many benefits of these standards is the ability to create an engine and hook it up to a GUI that speaks the protocol. This is not only beneficial from a developer's point of view but also for end users, who can choose their favorite GUI and pair it with their engine of choice.
+# Introducing Backgammon Position Notation (BPN): Towards a Standard in Backgammon Programming
 
-With this in mind, I'm excited to introduce the Backgammon Position Notation (BPN). It's a compact and human-readable notation I've developed to represent all possible game states in backgammon:
+In my work developing a couple of chess engines, I've greatly appreciated the existence of standard protocols like the Universal Chess Interface (UCI) and notations like Forsyth-Edwards Notation (FEN). These standards aren't just conceptual tools, but they form a practical foundation that has enabled chess programming to flourish. They serve to separate the concerns of the engine, which focuses on game analysis, and the graphical user interface (GUI), which deals with user interaction.
 
-`b4E1C3eE3c1e4B-1:n-w-0:0:7`
+When I began exploring backgammon from a developer's perspective, I realized that such standardization is not widespread. This lack of universal standards in backgammon programming is a significant barrier to the growth of the community. For the backgammon programming community to blossom, adopting such standards would be beneficial, allowing developers to create engines independently of GUIs, and enabling users to mix and match their preferred engine and interface.
 
-This notation consists of four fields, separated by hyphens:
+In this spirit, I'm proposing a Backgammon Position Notation (BPN) – a system inspired by FEN but designed to represent any backgammon game state. This post focuses on BPN as a counterpart to chess's FEN, acknowledging the role that such a standard could play in paving the way for the growth of backgammon programming.
 
-1. **Piece placement**: This represents the setup of checkers on the board from point 1 to point 26. Each character in the string represents the contents of a single point.
-2. **Cube value and ownership**: This indicates the value of the doubling cube and the owner of the cube.
-3. **Active color**: This designates the player on roll.
-4. **Match information**: This provides the current match score and the match length.
+The BPN consists of five fields separated by hyphens:
 
-Let's delve into an example to clarify the BPN:
+1. **Piece placement**: This field shows the number and color of pieces on each point, from point 1 to 26 (from the white player's perspective). Each point is denoted by a letter-number combination: lowercase for white, uppercase for black, with the number indicating the number of pieces of that color on the point. Consecutive empty points are represented by their count.
 
-Consider the BPN `b4E1C3eE3c1e4B-1:n-w-0:0:7`
+2. **Bar**: Represents the number of white and black checkers on the bar. The letter 'w' or 'b' denotes the color, followed by the number of checkers of that color on the bar.
 
-- The first part `b4E1C3eE3c1e4B` represents the piece placement. Here, `b` means that there are 2 white checkers on the 1st point. Then, there are 4 empty points, followed by 5 black checkers on the 6th point, and so on.
-- The second part `1:n` represents the cube value (1) and the owner (none, other possible owner values are `w` for white and `b` for black).
-- The third part `w` indicates that it is White's turn.
-- The last part `0:0:7` represents the current match score (0-0) and the length of the match (7 points).
+3. **Active color and dice roll**: Begins with 'w' or 'b' to denote the active player, followed by the dice roll (or '00' if no dice have been rolled yet).
 
-So in human words this would be the starting position, where white has won the dice starting roll and the score is 0-0 in a match to 7 points.
+4. **Cube value and ownership**: The cube value is represented as 'n' followed by the current value of the doubling cube, and the ownership is represented by '1' if owned by the white player, '2' if owned by the black player, and '0' if the cube is in the middle.
+
+5. **Match information**: Depicts the current score for both players (separated by a colon), followed by the total points needed to win the match.
+
+Here's a sample BPN for a starting position where white has won the opening roll of 3-1:
+
+`b4E1C3eE3c1e4B-w0b0-w31-n1-0:0:7`
 
 ![Starting position](https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Bg-start.svg/1920px-Bg-start.svg.png)
 
+The BPN string given above corelates to the picture. Here's how you interpret it:
+- `b`. We start by looking at the 1st point (square), `b` is the second letter in the alphabet, and it's lowercase. This translates to "There's 2 white checkers on the 1st point".
+- `4`. Four empty squares, in other words the squares 2, 3, 4 and 5 are empty.
+- `E`. Five black checkers at the 6th point.
+    * It's black since it's uppercase.
+    * I's 5 since `E` is the 5th letter in the alphabet.
+    * We know it's on the 6th point due to the previous step.
 
-The BPN provides a clear and consistent way to describe any game state in backgammon. It's designed to be intuitive and easy to use, much like the FEN in chess. With this notation, we can share and discuss backgammon positions just as easily as we do with chess positions. 
+And so forth.
 
-I'm thrilled to offer this contribution to the backgammon community, and I look forward to your thoughts and feedback.
+
+BPN serves as a clear, unambiguous representation of the game state. It's a stepping stone towards creating a standard protocol for backgammon engines, which is a prerequisite for a vibrant and accessible backgammon programming community. This is just the beginning, and I look forward to the journey of making backgammon programming as robust and standardized as its chess counterpart!
+
