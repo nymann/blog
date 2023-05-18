@@ -5,13 +5,7 @@ date: 2023-05-16 02:33:09
 tags: backgammon
 ---
 
-Certainly, let's adjust the introduction and clarify the focus of our post. 
-
----
-
-# Introducing Backgammon Position Notation (BPN): Towards a Standard in Backgammon Programming
-
-In my work developing a couple of chess engines, I've greatly appreciated the existence of standard protocols like the Universal Chess Interface (UCI) and notations like Forsyth-Edwards Notation (FEN). These standards aren't just conceptual tools, but they form a practical foundation that has enabled chess programming to flourish. They serve to separate the concerns of the engine, which focuses on game analysis, and the graphical user interface (GUI), which deals with user interaction.
+In my work developing a couple of chess engines, I've greatly appreciated the existence of standard protocols like the [Universal Chess Interface (UCI)](https://www.chessprogramming.org/UCI) and notations like [Forsyth-Edwards Notation (FEN)](https://www.chessprogramming.org/Forsyth-Edwards_Notation). These standards aren't just conceptual tools, but they form a practical foundation that has enabled chess programming to flourish. They serve to separate the concerns of the engine, which focuses on game analysis, and the graphical user interface (GUI), which deals with user interaction.
 
 When I began exploring backgammon from a developer's perspective, I realized that such standardization is not widespread. This lack of universal standards in backgammon programming is a significant barrier to the growth of the community. For the backgammon programming community to blossom, adopting such standards would be beneficial, allowing developers to create engines independently of GUIs, and enabling users to mix and match their preferred engine and interface.
 
